@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 360px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    position: relative;
+  }
+
+  h1 {
+    color: #e91e63;
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    color: #444;
+    min-height: 60px;
+  }
+
+  button {
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  #yesBtn {
+    background: #4caf50;
+    color: white;
+  }
+
+  #noBtn {
+    background: #f44336;
+    color: white;
+    position: absolute;
+  }
+
+  #message {
+    margin-top: 10px;
+    color: #ff1744;
+    font-weight: bold;
+  }
+
+  #result {
+    display: none;
+  }
+
+  img {
+    width: 220px;
+    margin-top: 15px;
+  }
+
+  .whatsapp {
+    margin-top: 15px;
+    background: #25d366;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container" id="questionBox">
+  <h1>Janu ❤️</h1>
+  <h2 id="typingText"></h2>
+
+  <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
+  <button id="noBtn" onmouseover="moveNo()">NO 💔</button>
+
+  <div id="message"></div>
+</div>
+
+<div class="container" id="result">
+  <h1>YAYYYYY!!!! 🎉</h1>
+  <h2>Best decision ever 💞</h2>
+
+  <!-- Islamic-friendly romantic illustration -->
+  <img src="https://cdn.pixabay.com/photo/2017/02/01/22/02/couple-2034785_1280.png" alt="Couple Art">
+
+  <h2>I love you ❤️</h2>
+
+<p style="
+  margin-top:15px;
+  font-size:15px;
+  color:#444;
+  line-height:1.6;
+  background:#fdf3f6;
+  padding:15px;
+  border-radius:15px;
+">
+🌙 <b>Dua for Us</b> 🤍<br><br>
+May Allah keep our hearts united, fill our home with love, mercy and barakah,<br>
+and make us a source of peace for each other.<br>
+<b>Ameen</b> 🤲
+</p>
+
+
+  <button class="whatsapp" onclick="shareWhatsApp()">Share on WhatsApp 💚</button>
+</div>
+
+<script>
+  /* Typing Animation */
+  const text = "Will you be my Valentine? 💕";
+  let index = 0;
+  function typeText() {
+    if (index < text.length) {
+      document.getElementById("typingText").innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeText, 80);
+    }
+  }
+  typeText();
+
+  /* No Button Messages */
+  const messages = [
+    "Don't do this to me 😭",
+    "Please no 🥺",
+    "Think again 😶",
+    "My heart is breaking 💔",
+    "This could be a mistake 😢"
+  ];
+
+  function moveNo() {
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 120);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    message.innerText = messages[Math.floor(Math.random() * messages.length)];
+  }
+
+  function yesClicked() {
+    document.getElementById("questionBox").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("bgMusic").play();
+  }
+
+  function shareWhatsApp() {
+    const msg = encodeURIComponent(
+      "I just said YES ❤️ to the cutest Valentine proposal ever 💕"
+    );
+    window.open(`https://wa.me/?text=${msg}`, "_blank");
+  }
+</script>
+
+</body>
+</html>
