@@ -186,6 +186,18 @@ Share on WhatsApp 💚
   music.play().catch(() => {
     document.getElementById("playNote").style.display = "block";
   });
+
+  setTimeout(() => {
+    document.getElementById("result").scrollIntoView({ behavior: "smooth" });
+  }, 300);
+}
+
+
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.6;
+  music.play().catch(() => {
+    document.getElementById("playNote").style.display = "block";
+  });
 }
 
 
