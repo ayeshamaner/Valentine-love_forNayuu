@@ -143,70 +143,65 @@ Share on WhatsApp 💚
 </div>
 
 <script>
-  /* Typing Animation */
-  const text = "Will you be my Valentine forever? 💕";
-  let index = 0;
-  function typeText() {
-    if (index < text.length) {
-      document.getElementById("typingText").innerHTML += text.charAt(index);
-      index++;
-      setTimeout(typeText, 80);
-    }
+/* Typing animation */
+const text = "Will you be my Valentine? 💕";
+let index = 0;
+function typeText() {
+  if (index < text.length) {
+    document.getElementById("typingText").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeText, 80);
   }
-  typeText();
+}
+typeText();
 
-  /* No Button Messages */
-  const messages = [
-    "Don't do this to me 😭",
-    "Please no 🥺",
-    "Think again 😶",
-    "My heart is breaking 💔",
-    "This could be a mistake 😢"
-  ];
+/* NO button movement */
+const messages = [
+  "Please no 🥺",
+  "Think again 😶",
+  "Don't do this to me 😭",
+  "My heart is breaking 💔"
+];
 
-  function moveNo() {
-    const noBtn = document.getElementById("noBtn");
-    const message = document.getElementById("message");
+function moveNo() {
+  const noBtn = document.getElementById("noBtn");
+  const msg = document.getElementById("message");
 
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 120);
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 120);
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 
-    message.innerText = messages[Math.floor(Math.random() * messages.length)];
-  }
+  msg.innerText = messages[Math.floor(Math.random() * messages.length)];
+}
 
-  function yesClicked() {
+/* YES button */
+function yesClicked() {
   document.getElementById("questionBox").style.display = "none";
   document.getElementById("result").style.display = "block";
 
   const music = document.getElementById("bgMusic");
-  music.volume = 0.6;
-  music.play().catch(() => {
-    document.getElementById("playNote").style.display = "block";
-  });
+  if (music) {
+    music.volume = 0.6;
+    music.play().catch(() => {
+      const note = document.getElementById("playNote");
+      if (note) note.style.display = "block";
+    });
+  }
 
   setTimeout(() => {
     document.getElementById("result").scrollIntoView({ behavior: "smooth" });
   }, 300);
 }
 
-
-  const music = document.getElementById("bgMusic");
-  music.volume = 0.6;
-  music.play().catch(() => {
-    document.getElementById("playNote").style.display = "block";
-  });
+/* WhatsApp share */
+function shareWhatsApp() {
+  const msg = encodeURIComponent(
+    "I just said YES ❤️ to the most beautiful Valentine surprise 🤍"
+  );
+  window.open("https://wa.me/?text=" + msg, "_blank");
 }
-
-
-  function shareWhatsApp() {
-    const msg = encodeURIComponent(
-      "I just said YES ❤️ to the cutest Valentine proposal ever 💕"
-    );
-    window.open(`https://wa.me/?text=${msg}`, "_blank");
-  }
 </script>
 
 </body>
