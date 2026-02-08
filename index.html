@@ -84,9 +84,14 @@
 <body>
 
 <!-- Background Music -->
-<audio id="bgMusic" loop>
+<!-- audio id="bgMusic" loop>
+  <source src="Love.mp3" type="audio/mpeg">
+</audio -->
+
+  <audio id="bgMusic">
   <source src="Love.mp3" type="audio/mpeg">
 </audio>
+
 
 <div class="container" id="questionBox">
   <h1>Janaa ❤️</h1>
@@ -165,10 +170,16 @@ and make us a source of peace for each other.<br>
   }
 
   function yesClicked() {
-    document.getElementById("questionBox").style.display = "none";
-    document.getElementById("result").style.display = "block";
-    document.getElementById("bgMusic").play();
-  }
+  document.getElementById("questionBox").style.display = "none";
+  document.getElementById("result").style.display = "block";
+
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.6;
+  music.play().catch(() => {
+    document.getElementById("playNote").style.display = "block";
+  });
+}
+
 
   function shareWhatsApp() {
     const msg = encodeURIComponent(
